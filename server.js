@@ -9,7 +9,8 @@ require('./data/db');
 
 // Middleware per il parsing del JSON
 app.use(express.json());
-
+// Middleware per servire file statici
+app.use(express.static('public'));
 
 
 // Avvio del server
