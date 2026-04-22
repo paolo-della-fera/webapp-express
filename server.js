@@ -3,6 +3,10 @@ const app = express();
 const moviesRouter = require('./routers/movieRouter');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
+const cors = require('cors');
+
+// Abilita CORS per tutte le rotte
+app.use(cors());
 
 require('./data/db');
 
@@ -14,8 +18,8 @@ app.use(express.static('public'));
 
 
 // Avvio del server
-app.listen(3000, () => {
-  console.log('Server avviato su http://localhost:3000');
+app.listen(3010, () => {
+  console.log('Server avviato su http://localhost:3010');
 });
 
 
