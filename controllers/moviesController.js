@@ -44,4 +44,22 @@ const show = (req, res) => {
   });
 };
 
-module.exports = { index, show };
+
+// Store
+const storeReview = (req, res) => {
+  const movie_id = parseInt(req.params.id);
+  const { name, vote, text } = req.body;
+
+  const query = 'INSERT INTO reviews (movie_id, name, vote, text) VALUES (?, ?, ?, ?)';
+
+  connection.query(query, [movie_id, name, vote, text], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    res.status(201).json({ message: 'Recensione aggiunta con successo', id: result.insertId });
+  });
+};
+
+
+module.exports = { index, show, storeReview };
